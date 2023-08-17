@@ -30,4 +30,12 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - name: Trigger deployment
-        run: curl https://api.render.com/deploy/srv-${{ secrets.RENDER_SERVICE_ID }}?key=${{ secrets.RENDER_API_KEY }}
+        uses: Bounceapp/render-action@0.7.0
+        with:
+          render-token: ${{ secrets.RENDER_API_KEY }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          service-id: srv-cjeu9f2vvtos73ek1vlg
+          retries: 20
+          wait: 16000
+          sleep: 30000
+            
